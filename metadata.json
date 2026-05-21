@@ -1,0 +1,6 @@
+{
+  "name": "Matrice ODD BOAD",
+  "description": "Outil d'analyse d'impact et de scoring d'alignement des projets de développement de la BOAD avec les 17 Objectifs de Développement Durable (ODD) de l'ONU.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
