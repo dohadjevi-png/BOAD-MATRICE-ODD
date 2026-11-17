@@ -17,7 +17,7 @@ service cloud.firestore {
     }
 
     function isValidId(id) {
-      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_-]+$');
     }
 
     function incoming() {
@@ -30,13 +30,13 @@ service cloud.firestore {
 
     function isValidProject(data) {
       return data.keys().hasAll(['id', 'titre', 'description', 'secteur', 'pays', 'montant', 'createdAt'])
-          && data.id is string && data.id.size() <= 128
-          && data.titre is string && data.titre.size() <= 500
-          && data.description is string && data.description.size() <= 50000
-          && data.secteur is string && data.secteur.size() <= 200
-          && data.pays is string && data.pays.size() <= 100
-          && data.montant is string && data.montant.size() <= 100
-          && data.createdAt is string && data.createdAt.size() <= 100;
+          && data.id is string && data.id.size() <= 256
+          && data.titre is string && data.titre.size() <= 2000
+          && data.description is string && data.description.size() <= 100000
+          && data.secteur is string && data.secteur.size() <= 500
+          && data.pays is string && data.pays.size() <= 500
+          && data.montant is string && data.montant.size() <= 500
+          && data.createdAt is string && data.createdAt.size() <= 200;
     }
 
     // Rules for individual subcollections
@@ -49,6 +49,11 @@ service cloud.firestore {
                     && isValidId(projectId) 
                     && isValidProject(incoming());
       allow delete: if isOwner(userId);
+    }
+
+    // Rules for AVIS RSE module : chaque utilisateur ne voit que ses propres avis
+    match /users/{userId}/avis_rse/{avisId} {
+      allow read, write: if isOwner(userId);
     }
   }
 }

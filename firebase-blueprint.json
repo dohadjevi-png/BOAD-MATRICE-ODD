@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "Un projet d'évaluation et d'alignement RSE de la BOAD",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titre": { "type": "string" },
+        "description": { "type": "string" },
+        "secteur": { "type": "string" },
+        "pays": { "type": "string" },
+        "montant": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "indicators": { "type": "string" },
+        "analysis": { "type": "object" },
+        "overrides": { "type": "array" }
+      },
+      "required": ["id", "titre", "description", "secteur", "pays", "montant", "createdAt"]
+    },
+    "AvisRse": {
+      "title": "AvisRse",
+      "description": "Évaluation officielle RSE en 3 phases selon la grille BOAD",
+      "type": "object",
+      "properties": {
+        "projetId": { "type": "string" },
+        "codeProjet": { "type": "string" },
+        "intitule": { "type": "string" },
+        "description": { "type": "string" },
+        "documentImporte": { "type": "object" },
+        "fep": { "type": "object" },
+        "uoRse": { "type": "object" },
+        "definitif": { "type": "object" },
+        "synthese": { "type": "object" }
+      },
+      "required": ["projetId", "codeProjet", "intitule"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "Project",
+      "description": "La liste des projets d'évaluation RSE saisis et gérés individuellement par chaque analyste BOAD"
+    },
+    "/avis_rse/{avisId}": {
+      "schema": "AvisRse",
+      "description": "Dossiers d'Avis RSE officiels de la BOAD"
+    }
+  }
+}

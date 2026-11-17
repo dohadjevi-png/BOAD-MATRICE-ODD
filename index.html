@@ -2,8 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Prevent third-party browser extensions or web-extension polyfills from throwing
+      // "getManifest is not a function" errors in this iframe environment.
+      (function() {
+        try {
+          window.chrome = window.chrome || {};
+          window.chrome.runtime = window.chrome.runtime || {};
+          if (typeof window.chrome.runtime.getManifest !== 'function') {
+            window.chrome.runtime.getManifest = function() {
+              return { name: "BOAD Matrix", version: "1.0.0" };
+            };
+          }
+        } catch (e) {}
+        try {
+          window.browser = window.browser || {};
+          window.browser.runtime = window.browser.runtime || {};
+          if (typeof window.browser.runtime.getManifest !== 'function') {
+            window.browser.runtime.getManifest = function() {
+              return { name: "BOAD Matrix", version: "1.0.0" };
+            };
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Matrice ODD BOAD — Évaluation d'Impact</title>
+    <title>BOAD NEXUS — Évaluation ex-ante ESG, ODD & Impact</title>
   </head>
   <body>
     <div id="root"></div>

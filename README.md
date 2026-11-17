@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# BOAD NEXUS (version en ligne)
 
-# Run and deploy your AI Studio app
+Outil d'évaluation ex-ante ESG, ODD et d'impact des financements de la BOAD.
+Cette version utilise Firebase (projet `boad-nexus-test`) pour la connexion et les données.
 
-This contains everything you need to run your app locally.
+## Déploiement sur Render
 
-View your app in AI Studio: https://ai.studio/apps/cd6af6d9-6001-416c-af20-60ed374580cf
+- **Build Command** : `npm install --include=dev && npm run build`
+- **Start Command** : `npm start`
+- **Variables d'environnement** :
+  - `NODE_ENV` = `production`
+  - `NODE_VERSION` = `22`
+  - `GEMINI_API_KEY` = la clé Gemini (à ne jamais mettre dans le code)
 
-## Run Locally
+Après le premier déploiement, ajouter l'adresse Render (`xxx.onrender.com`) dans
+Firebase › Authentication › Paramètres › Domaines autorisés.
 
-**Prerequisites:**  Node.js
+## Lancer en local
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. `npm install`
+2. Créer un fichier `.env` avec `GEMINI_API_KEY=...`
+3. `npm run dev`

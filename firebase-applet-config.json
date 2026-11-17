@@ -1,16 +1,10 @@
-declare module "*.png" {
-  const value: string;
-  export default value;
-}
-declare module "*.jpg" {
-  const value: string;
-  export default value;
-}
-declare module "*.jpeg" {
-  const value: string;
-  export default value;
-}
-declare module "*.svg" {
-  const value: string;
-  export default value;
+{
+  "projectId": "boad-nexus-test",
+  "appId": "1:1074221992230:web:1f9e2a0fb96365fec259e7",
+  "apiKey": "AIzaSyBZRkWNgKUYq0-vY7nHKSwqyabskU_DhQY",
+  "authDomain": "boad-nexus-test.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "boad-nexus-test.firebasestorage.app",
+  "messagingSenderId": "1074221992230",
+  "measurementId": ""
 }
